@@ -6,7 +6,7 @@ node {
     env.PATH = "${tfHome}:${env.PATH}"
       sh "terraform --version"
     stage 'Stage 3'
-       echo 'Hello World 3'
+        sh "terraform get"
     stage 'Stage 4'
-       echo 'Hello World 4'
+       sh "terraform plan"
 }

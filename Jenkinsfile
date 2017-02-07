@@ -1,6 +1,6 @@
 node {
     stage 'Checkout'
-     echo "My secret is $mmgithub"
+     sh 'echo $mmgithub'
     // // Get some code from a GitHub repository
     git credentialsId: '$mmgithub', url: 'ssh://git@github.com:michaelmcclintock/JenkinsPlaygound.git'
     

@@ -1,9 +1,7 @@
 node {
     stage 'Checkout'
-     set +x
-     sh 'echo $mmgithub'
-    // // Get some code from a GitHub repository
-    git credentialsId: '$mmgithub', url: 'ssh://git@github.com:michaelmcclintock/JenkinsPlaygound.git'
+        // // Get some code from a GitHub repository
+    git url: 'https://github.com/michaelmcclintock/JenkinsPlaygound.git' 
     
     stage 'Stage 2'
       def tfHome = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'

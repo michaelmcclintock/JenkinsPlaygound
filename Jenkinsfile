@@ -1,6 +1,9 @@
 node {
-    stage 'Build'
-       echo 'Hello World 1'
+    stage 'Checkout'
+     
+    // // Get some code from a GitHub repository
+    git url: 'git@github.com:michaelmcclintock/JenkinsPlaygound.git'   
+    
     stage 'Stage 2'
       def tfHome = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
    env.PATH = "${tfHome}:${env.PATH}"

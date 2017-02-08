@@ -20,7 +20,7 @@ node {
                     sh "rm status"
                 }
                 sh "terraform get"
-                sh "set +e; terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out=plan.out -detailed-exitcode; echo \$? &gt; status"
+                sh "set +e; terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out=plan.out -detailed-exitcode;"
                 def exitCode = readFile('status').trim()
                 def apply = false
                 echo "Terraform Plan Exit Code: ${exitCode}"

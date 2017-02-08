@@ -21,24 +21,6 @@ node {
                 }
                 sh "terraform get"
                 sh "set +e; terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out=plan.out -detailed-exitcode;"
-                def exitCode = readFile('status').trim()
-                def apply = false
-                echo "Terraform Plan Exit Code: ${exitCode}"
-                if (exitCode == "0") {
-                    currentBuild.result = 'SUCCESS'
-                }
-                if (exitCode == "1") {
-                   currentBuild.result = 'FAILURE'
-                }
-                if (exitCode == "2") {
-                    stash name: "plan", includes: "plan.out"
-                     try {
-                        input message: 'Apply Plan?', ok: 'Apply'
-                        apply = true
-                    } catch (err) {
-                        apply = false
-                        currentBuild.result = 'UNSTABLE'
-                    }
-                }
+                
             }
 }

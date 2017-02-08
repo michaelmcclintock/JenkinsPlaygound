@@ -20,7 +20,7 @@ node {
                     sh "rm status"
                 }
                 sh "terraform get"
-                sh "set +e; terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out=plan.out -detailed-exitcode;"
+                sh "set +e; terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out=plan.out;"
                 
             }
 }

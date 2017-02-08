@@ -13,12 +13,8 @@ node {
                     // Output Terraform version
                 sh "terraform --version"
                 //Remove the terraform state file so we always start from a clean state
-                if (fileExists(".terraform/terraform.tfstate")) {
-                    sh "rm -rf .terraform/terraform.tfstate"
-                }
-                if (fileExists("status")) {
-                    sh "rm status"
-                }
+                sh "terraform remote config -backend=s3 -backend-config='bucket=us-west-2a.terraform.remotestate.sb' -backend-config='key=${PROJECT}/terraform.tfstate' -backend-config='${var.region}'
+                
                 sh "terraform get"
                 sh "set +e; terraform plan -var 'access_key=$ACCESS_KEY' -var 'secret_key=$SECRET_KEY' -out=plan.out;"
                 

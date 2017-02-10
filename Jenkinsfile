@@ -1,4 +1,5 @@
 node {
+    properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [[$class: 'StringParameterDefinition', defaultValue: '', description: 'Some Description', name : 'MY_PARAM'], [$class: 'StringParameterDefinition', defaultValue: '', description: 'Some Description', name: 'MY_PARAM2']]]])
     stage 'Checkout'
         // Get some code from a GitHub repository
         git url: 'https://github.com/michaelmcclintock/JenkinsPlaygound.git' 

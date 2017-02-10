@@ -24,13 +24,10 @@ node {
            if (fileExists("status")) {
                sh "rm status"
            }
-                sh "cd terraform/aws/environments/dev/networking/"
-                
-                sh "pwd"
                 
                 sh "terraform get"
                 
-                sh "set +e; terraform plan -var 'access_key=$AWS_ACCESS_KEY_ID' -var 'secret_key=$AWS_SECRET_ACCESS_KEY' -out=plan.out;"
+                sh "set +e; terraform plan terraform/aws/environments/dev/networking/ -var 'access_key=$AWS_ACCESS_KEY_ID' -var 'secret_key=$AWS_SECRET_ACCESS_KEY' -out=plan.out;"
                 
                 
             }
